@@ -164,4 +164,9 @@ data[2] <- sapply(data[2],function(x){activities_vec[x]})
 # We can do that in just one line thank to R ;D
 data_final <- data %>% group_by(subject,activity) %>% summarise_each(funs(mean(., na.rm = TRUE)))
 
-write_delim(data_final, "data_final.txt", delim = " ", col_names = FALSE)
+write_delim(data_final, "data_final_means.txt", delim = " ", col_names = FALSE)
+
+# in addition to the final data, I am going to write a file with the
+# column names for it
+write_delim(data.frame(1:length(data_names),data_names), "data_final_colnames.txt", delim = " ", col_names = FALSE)
+
