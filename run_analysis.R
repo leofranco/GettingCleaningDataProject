@@ -20,6 +20,7 @@ activities <- read_delim("./UCI HAR Dataset/activity_labels.txt", delim = " ", c
 # read the training set
 #  ncol(training_set)=662	nrow(training_set)=7352
 training_set <- read_delim("./UCI HAR Dataset/train/X_train.txt", delim = " ", col_names = FALSE) 
+training_set <- training_set[3:ncol(training_set)]
 
 # read the training labels
 #  ncol(training_labels)=1	nrow(training_labels)=7352
@@ -32,6 +33,7 @@ training_subjects <- read_delim("./UCI HAR Dataset/train/subject_train.txt", del
 # read the test set
 # ncol(test_set)=667	nrow(test_set)=2947 
 test_set <- read_delim("./UCI HAR Dataset/test/X_test.txt", delim = " ", col_names = FALSE) 
+test_set <- test_set[3:ncol(test_set)]
 
 # read the test labels
 # ncol(test_labels)=1	nrow(test_labels)=2947 
@@ -169,4 +171,5 @@ write_delim(data_final, "data_final_means.txt", delim = " ", col_names = FALSE)
 # in addition to the final data, I am going to write a file with the
 # column names for it
 write_delim(data.frame(1:length(data_names),data_names), "data_final_colnames.txt", delim = " ", col_names = FALSE)
+
 
